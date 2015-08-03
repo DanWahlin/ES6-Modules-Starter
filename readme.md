@@ -43,4 +43,4 @@ Now we are golden!
 
 ## Credits
 
-Special thanks to my friend Dan for hacking at this simple example with me :)
+Created by John Papa and Dan Wahlin
