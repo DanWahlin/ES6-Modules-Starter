@@ -7,7 +7,7 @@ System.config({
     ]
   },
   "paths": {
-    "*": "*.js",
+    "*": "*.js"
   },
   "defaultJSExtensions": true
 });
