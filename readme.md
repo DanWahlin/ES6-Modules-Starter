@@ -27,7 +27,7 @@ System.config({
     baseURL: '/dist',
     babelOptions: {
     },
-    "defaultJSExtensions": true
+    defaultJSExtensions: true
 });
 ```
 

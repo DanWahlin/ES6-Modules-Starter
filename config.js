@@ -1,13 +1,13 @@
 System.config({
-  "baseURL": "/dist",
-  "transpiler": "babel",
-  "babelOptions": {
-    "optional": [
+  baseURL: "/dist",
+  transpiler: "babel",
+  babelOptions: {
+    optional: [
       "runtime"
     ]
   },
-  "paths": {
+  paths: {
     "*": "*.js"
   },
-  "defaultJSExtensions": true
+  defaultJSExtensions: true
 });
