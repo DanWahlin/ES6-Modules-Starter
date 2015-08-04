@@ -15,36 +15,22 @@ gulp.task('watch', function() {
     gulp.watch(es6Path, ['babel']);
 });
 
-gulp.task('serve', ['watch'], function () {
-    // ecstatic({root: __dirname + '/' + compilePath})
-    var server = superstatic({
-        clean_urls: true,
-        routes: {
-            '/**': 'index.html',
-            '/js/**/*': '/js/'
-        }
-    });
-    server.listen(function() {
-        startBrowserSync();
-    });
+gulp.task('serve', ['watch'], function() {
+  process.stdout.write('Starting browserSync and superstatic...\n');
+  browserSync({
+    port: 3000,
+    files: ['index.html', '**/*.js'],
+    injectChanges: true,
+    logFileChanges: false,
+    logLevel: 'silent',
+    logPrefix: 'es6-modules-starter',
+    notify: true,
+    reloadDelay: 0,
+    server: {
+      baseDir: '.',
+      middleware: superstatic({ debug: false}) 
+    }
+  });
 });
 
 gulp.task('default', ['babel', 'watch']);
-
-function startBrowserSync() {
-    if (browserSync.active) { return; }
-
-    var options = {
-        proxy: 'localhost:3474',
-        port: 3000,
-        files: ['**/*.js'],
-        injectChanges: true,
-        logFileChanges: true,
-        logLevel: 'debug',
-        logPrefix: 'es6play',
-        notify: true,
-        reloadDelay: 0
-    } ;
-
-    browserSync(options);
-}
