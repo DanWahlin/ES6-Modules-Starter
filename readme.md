@@ -5,15 +5,15 @@
 
 1. Install the global packages.
 
-	`npm install gulp -g`
+    `npm install gulp -g`
 
 2. Install the local packages for this demo.
 
-	`npm install`
+    `npm install`
 
 3. Run the server, launch the browser, and transpile the ES6 to ES5 using Babel
 
-	`npm start`
+    `npm start`
 
 ## Details
 
@@ -37,7 +37,9 @@ We can now import the main starting modules `main.js` like this:
 System.import('./dist/main');
 ```
 
-Now SystemJS gets `/dist/main.js` which in turn imports `autos`. SystemJS knows that the base URL is `/dist` and to assume an extension of `.js`, so it really gets `/dist/autos.js`.
+Now SystemJS gets `/dist/main.js` which in turn imports `car` and `truck`. Each of those import `auto` and extend it.
+SystemJS knows that the base URL is `/dist` and to assume an extension of `.js`, so it really gets `/dist/car.js` and `/dist/truck.js`
+which in turn get `/dist/auto.js`.
 
 Now we are golden!
 
