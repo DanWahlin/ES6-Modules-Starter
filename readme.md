@@ -1,4 +1,4 @@
-#Working with ES6 and Modules
+#ES6 Modules Starter Project
 
 ## Quick Start
 
