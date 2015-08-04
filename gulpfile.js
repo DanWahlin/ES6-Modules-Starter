@@ -15,7 +15,7 @@ gulp.task('watch', function() {
     gulp.watch(es6Path, ['babel']);
 });
 
-gulp.task('serve', ['watch'], function() {
+gulp.task('serve', ['babel', 'watch'], function() {
   process.stdout.write('Starting browserSync and superstatic...\n');
   browserSync({
     port: 3000,
@@ -28,7 +28,7 @@ gulp.task('serve', ['watch'], function() {
     reloadDelay: 0,
     server: {
       baseDir: '.',
-      middleware: superstatic({ debug: false}) 
+      middleware: superstatic({ debug: false})
     }
   });
 });
