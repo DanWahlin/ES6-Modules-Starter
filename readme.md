@@ -1,7 +1,6 @@
-#ES6 Modules Starter Project
+#ES6/ES2015 Modules Starter Project
 
 ## Quick Start
-
 
 1. Install the global packages.
 
@@ -15,7 +14,7 @@
 
     `gulp`
 
-3. Run the server, launch the browser, and transpile the ES6 to ES5 using Babel
+4. Run the server, launch the browser, and transpile the ES6 to ES5 using Babel
 
     `npm start`
 
@@ -23,7 +22,7 @@
 
 The source code is located in the `js` folder and written in ES6/ES2015. We use `gulp` to transpile to ES5 using Babel. The `gulp` command runs the default Gulp task which transpiles the code and puts it in the `dist` folder and then watches for more changes. If you change the source, it will transpile again.
 
-When you launch index.html, SystemJS kicks in and looks for `config.js` for its settings. We tell SystemJS to use Babel to transpile and that the baseURL for the code is in `/dist`. This is important so all import statements that were written assuming relative pathing in the `src` folder will still work. Finally, we tell SystemJS that import statements by default should assume they end with `.js`. This is accomplished by setting `defaultExtension` to `true`. See the code below for an example.
+When you launch index.html (via `npm start`), SystemJS kicks in and looks for `config.js` for its settings. We tell SystemJS that the base URL for the code is in `/dist`. This is important so all import statements that were written assuming relative pathing in the `src` folder will still work. Finally, we tell SystemJS that import statements by default should assume they end with `.js`. This is accomplished by setting `defaultExtension` to `js`. See the code below for an example.
 
 ```javascript
 System.config({
