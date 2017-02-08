@@ -11,38 +11,42 @@
 
     `npm install`
 
+3. Run Gulp:
+
+    `gulp`
+
 3. Run the server, launch the browser, and transpile the ES6 to ES5 using Babel
 
     `npm start`
 
 ## Details
 
-The source code is located in the `js` folder and written in ES6. We use `gulp` to transpile the ES6 to ES5 using Babel. The `npm start` command runs the `gulp serve` task which transpiles the code and puts it in the `dist` folder and then watches for more changes. If you change the source, it will transpile again. It also runs the superstatic server (you can run any server you want, but this is super simple) and launches the browser using browser-sync. When any files change, the browser will reload.
+The source code is located in the `js` folder and written in ES6/ES2015. We use `gulp` to transpile to ES5 using Babel. The `gulp` command runs the default Gulp task which transpiles the code and puts it in the `dist` folder and then watches for more changes. If you change the source, it will transpile again.
 
-When you launch a browser to [http://localhost:3000](http://localhost:3000) SystemJS kicks in and looks for `config.js` for its settings. We tell SystemJS to use Babel to transpile and that the baseURL for the code is in `/dist`. This is important so all import statements that were written assuming relative pathing in the `src` folder will still work. Finally, we tell SystemJS that import statements by default should assume they end with `.js`. This is accomplished by setting `defaultJSExtensions` to `true`. See below for an example.
+When you launch index.html, SystemJS kicks in and looks for `config.js` for its settings. We tell SystemJS to use Babel to transpile and that the baseURL for the code is in `/dist`. This is important so all import statements that were written assuming relative pathing in the `src` folder will still work. Finally, we tell SystemJS that import statements by default should assume they end with `.js`. This is accomplished by setting `defaultExtension` to `true`. See the code below for an example.
 
 ```javascript
 System.config({
-    transpiler: 'babel',
-    baseURL: '/dist',
-    babelOptions: {
+    map: {
+      main: 'dist' //Map "main" to the "dist" folder
     },
-    defaultJSExtensions: true
+    packages: {
+      //Define settings for loading files in "dist"
+      dist: {
+        main: 'main.js',
+        format: 'system',
+        defaultExtension: 'js'
+      }
+    }
 });
 ```
 
-We can now import the main starting modules `main.js` like this:
+We can now import the main starting module (`main.js`) like this:
 
 ```javascript
-System.import('./dist/main');
+System.import('main');
 ```
 
 Now SystemJS gets `/dist/main.js` which in turn imports `car` and `truck`. Each of those import `auto` and extend it.
 SystemJS knows that the base URL is `/dist` and to assume an extension of `.js`, so it really gets `/dist/car.js` and `/dist/truck.js`
 which in turn get `/dist/auto.js`.
-
-Now we are golden!
-
-## Credits
-
-Created by John Papa and Dan Wahlin

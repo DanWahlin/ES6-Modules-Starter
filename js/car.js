@@ -1,4 +1,4 @@
-import {Auto} from 'auto';
+import {Auto} from './auto';
 
 export class Car extends Auto {
     constructor(data) {
